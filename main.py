@@ -1,11 +1,14 @@
 from flask import Flask
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Hello, World from ' + os.getenv('NAME', 'Howest') + '!'
 
 
 @app.route('/greet/<name>')
